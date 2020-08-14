@@ -23,7 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'tss'
-gem 'activestorage-horcrux', :path => '../activestorage-horcrux'
+#gem 'activestorage-horcrux', :path => '../activestorage-horcrux'
+gem 'activestorage-horcrux'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
