@@ -10,6 +10,14 @@ class UploadsController < ApplicationController
   # GET /uploads/1
   # GET /uploads/1.json
   def show
+    @secret = ""
+    begin
+      @secret = @upload.clip.download
+    rescue TSS::ArgumentError
+      @secret = "NOT ENOUNG SHARES"
+    rescue ParamContractError
+      @secret = "INVALID KEY(S)"
+    end
   end
 
   # GET /uploads/new
@@ -19,6 +27,14 @@ class UploadsController < ApplicationController
 
   # GET /uploads/1/edit
   def edit
+    @secret = ""
+    begin
+      @secret = @upload.clip.download
+    rescue TSS::ArgumentError
+      @secret = "NOT ENOUNG SHARES"
+    rescue ParamContractError
+      @secret = "INVALID KEY(S)"
+    end
   end
 
   # POST /uploads
@@ -49,7 +65,7 @@ class UploadsController < ApplicationController
   # PATCH/PUT /uploads/1.json
   def update
     respond_to do |format|
-      if @upload.update(upload_params)
+      if updatekey
         format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
         format.json { render :show, status: :ok, location: @upload }
       else
@@ -70,6 +86,11 @@ class UploadsController < ApplicationController
   end
 
   private
+    def updatekey
+      @upload.clip.blob.key = params[:name].join(',')
+      @upload.clip.blob.save!
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_upload
       @upload = Upload.find(params[:id])
@@ -77,6 +98,6 @@ class UploadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def upload_params
-      params.require(:upload).permit(:clip)
+      params.require(:upload).permit(:clip,:name)
     end
 end

@@ -1,6 +1,40 @@
 <h1>Editing Upload</h1>
 
-<%= render 'form', upload: @upload %>
+<%= form_with(model: @upload, local: true) do |form| %>
+  <% if @upload.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+      <ul>
+        <% @upload.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= @upload.name %>:<b><%= @secret %></b>
+  <br/>
+  <%= hidden_field :upload, :clip, :value => "" %>
+
+  <ul>
+    <% i = 0 %>
+    <% @upload.clip.blob.key.split(',').each do |k| %>
+    <li><%= text_field nil, "name[]", :size => 50, :value => k %></li>
+    <% i = i + 1 %>
+    <% end %>
+    <li><%= text_field nil, "name[]", :size => 50, :value => '' %></li>
+    <li><%= text_field nil, "name[]", :size => 50, :value => '' %></li>
+    <li><%= text_field nil, "name[]", :size => 50, :value => '' %></li>
+    <li><%= text_field nil, "name[]", :size => 50, :value => '' %></li>
+    <li><%= text_field nil, "name[]", :size => 50, :value => '' %></li>
+  </ul>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
 
 <%= link_to 'Show', @upload %> |
 <%= link_to 'Back', uploads_path %>
