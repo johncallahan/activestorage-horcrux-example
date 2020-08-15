@@ -42,8 +42,16 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
 
+    ok = true
+    begin
+      @upload.save
+    rescue ParamContractError
+      ok = false
+      @upload.delete
+    end
+
     respond_to do |format|
-      if @upload.save
+      if ok
         filename = Dir.glob("/tmp/" + @upload.clip.blob.key + "*")[0]
         file = File.open(filename)
 	keys = file.read
@@ -55,7 +63,7 @@ class UploadsController < ApplicationController
         format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
         format.json { render :show, status: :created, location: @upload }
       else
-        format.html { render :new }
+        format.html { redirect_to uploads_path, notice: 'Upload was too large' }
         format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end
