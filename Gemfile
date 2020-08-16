@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'tss'
 #gem 'activestorage-horcrux', :path => '../activestorage-horcrux'
-gem 'activestorage-horcrux'
+gem 'activestorage-horcrux', '~> 0.0.2'
 gem 'lockbox'
 
 # Use Active Storage variant
