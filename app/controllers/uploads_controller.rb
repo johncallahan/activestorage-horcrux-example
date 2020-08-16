@@ -14,9 +14,11 @@ class UploadsController < ApplicationController
     begin
       @secret = @upload.clip.download
     rescue TSS::ArgumentError
-      @secret = "NOT ENOUNG SHARES"
+      @secret = "[error: NOT ENOUNG SHARES]"
     rescue ParamContractError
-      @secret = "INVALID KEY(S)"
+      @secret = "[error: INVALID KEY(S)]"
+    rescue Lockbox::DecryptionError
+      @secret = "[error: CANNOT DECRYPT]"
     end
   end
 

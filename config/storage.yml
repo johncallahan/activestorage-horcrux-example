@@ -14,6 +14,7 @@ horcrux:
   service: Horcrux
   shares: 5
   threshold: 3
+  prefix: true
   services: [disk1, disk2]
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
