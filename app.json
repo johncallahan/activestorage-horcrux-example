@@ -4,10 +4,14 @@
   "repository": "https://github.com/johncallahan/activestorage-horcrux-example",
   "keywords": ["activestorage", "rails", "horcrux"],
   "success_url": "/",
+  "addons": ["heroku-postgresql:hobby-dev"],
   "env": {
     "LOCKBOX_MASTER_KEY": {
       "description": "master key for lockbox gem (default for development only)",
       "value": "0000000000000000000000000000000000000000000000000000000000000000"
     }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
   }
 }
