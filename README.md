@@ -98,7 +98,7 @@ Then visit http://localhost:3000
 
 # Heroku deployment
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/johncallahan/activestorage-horcrux-example)
 
 # To-do/Issues
 
