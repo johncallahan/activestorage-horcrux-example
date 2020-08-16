@@ -98,7 +98,7 @@ Then visit http://localhost:3000
 
 # Heroku deployment
 
-TBD
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 # To-do/Issues
 

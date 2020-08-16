@@ -1,0 +1,13 @@
+{
+  "name": "ActiveStorage Horcrux Example",
+  "description": "A sample rails app using the activestorage-horcrux gem",
+  "repository": "https://github.com/johncallahan/activestorage-horcrux-example",
+  "keywords": ["activestorage", "rails", "horcrux"]
+  "success_url": "/",
+  "env": {
+    "LOCKBOX_MASTER_KEY": {
+      "description": "master key for lockbox gem (default for development only)",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}
