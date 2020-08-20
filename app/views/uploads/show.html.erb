@@ -3,6 +3,9 @@
 <%= @upload.name %>:<b><%= @secret %></b>
 <br/>
 
+<%= @upload.name %>:<b><%= image_tag @secret %></b>
+<br/>
+
 <ul>
 <% @upload.clip.blob.key.split(',').each do |k| %>
 <li><%= k %></li>
