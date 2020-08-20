@@ -3,7 +3,7 @@
 <%= @upload.name %>:<b><%= @secret %></b>
 <br/>
 
-<%= @upload.name %>:<b><%= image_tag @secret %></b>
+as an image:<b><%= image_tag "data:image/png;base64,#{Base64.strict_encode64(@secret)}", :height => "180" %></b>
 <br/>
 
 <ul>
