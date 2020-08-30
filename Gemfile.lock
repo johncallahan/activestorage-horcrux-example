@@ -50,7 +50,7 @@ GEM
       activejob (= 6.0.3.2)
       activerecord (= 6.0.3.2)
       marcel (~> 0.3.1)
-    activestorage-horcrux (0.0.3)
+    activestorage-horcrux (0.0.4)
     activestorage-ipfs (0.0.2)
       http (~> 4.3)
     activestorage-pinata (0.0.1)
@@ -242,7 +242,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activestorage-horcrux (~> 0.0.3)
+  activestorage-horcrux (~> 0.0.4)
   activestorage-ipfs
   activestorage-pinata
   bootsnap (>= 1.4.2)

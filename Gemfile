@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'tss'
 #gem 'activestorage-horcrux', :path => '../activestorage-horcrux'
-gem 'activestorage-horcrux', '~> 0.0.3'
+gem 'activestorage-horcrux', '~> 0.0.4'
 gem 'activestorage-ipfs'
 gem 'activestorage-pinata'
 gem 'lockbox'
