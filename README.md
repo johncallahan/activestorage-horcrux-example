@@ -18,12 +18,17 @@ disk2:
   service: Disk
   root: "tmp/disk2"
 
+ipfs:
+  service: Ipfs
+  api_endpoint: https://ipfs.infura.io:5001
+  gateway_endpoint: https://cloudflare-ipfs.com
+
 horcrux:
   service: Horcrux
   shares: 5
   threshold: 3
   prefix: true
-  services: [ disk1, disk2 ]
+  services: [ disk1, ipfs, disk2 ]
 ```
 
 # Examples
