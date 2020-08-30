@@ -44,24 +44,8 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
 
-    ok = true
-    begin
-      @upload.save
-    rescue ParamContractError
-      ok = false
-      @upload.delete
-    end
-
     respond_to do |format|
-      if ok
-        filename = Dir.glob("/tmp/" + @upload.clip.blob.key + "*")[0]
-        file = File.open(filename)
-	keys = file.read
-	file.close
-	File.delete(filename)
-	@upload.clip.blob.key = keys
-	@upload.clip.blob.save!
-
+      if @upload.save
         format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
         format.json { render :show, status: :created, location: @upload }
       else
